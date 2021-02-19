@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.hotel.demo.model.User;
 
-@Service
 public interface UserService {
 
 	 User addUser(User user);

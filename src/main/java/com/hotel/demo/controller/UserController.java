@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.hotel.demo.exception.UserNotFoundException;
+import com.hotel.demo.model.Menu;
 import com.hotel.demo.model.User;
 import com.hotel.demo.respository.UserRepository;
 import com.hotel.demo.serviceimpl.UserServiceImpl;
@@ -163,15 +164,10 @@ class Message {
 	private List<User> users;
 	boolean auth;
 	User user;
+	private List<Menu> menus;
+	Menu menu;
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
+	
 	public Message() {
 		super();
 	}
@@ -210,4 +206,30 @@ class Message {
 	public void setAuth(boolean auth) {
 		this.auth = auth;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Menu> getMenus() {
+		return menus;
+	}
+
+	public void setMenus(List<Menu> menus) {
+		this.menus = menus;
+	}
+
+	public Menu getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+
+	
 }

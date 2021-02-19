@@ -1,10 +1,15 @@
 package com.hotel.demo.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import org.springframework.web.multipart.MultipartFile;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.ManyToAny;
+
+import net.bytebuddy.dynamic.loading.ClassReloadingStrategy.Strategy;
 
 @Entity
 public class Menu {
@@ -16,11 +21,21 @@ public class Menu {
 	String description;
 	int price;
 	String imageType;
-	String imageName; 
+	String imageName;
 	
-	public Menu()
-	{}
-	
+	public Menu() {
+		super();
+	}
+
+	public Menu(Menu menu) {
+		super();
+		this.dishName = menu.dishName;
+		this.description = menu.description;
+		this.price = menu.price;
+		this.imageType = menu.imageType;
+		this.imageName = menu.imageName;
+	}
+
 	public Menu(String dishName, String description, int price, String imageType, String imageName) {
 		super();
 		this.dishName = dishName;
@@ -83,5 +98,5 @@ public class Menu {
 		return "Menu [menuId=" + menuId + ", dishName=" + dishName + ", description=" + description + ", price=" + price
 				+ ", image=" + imageType + ", imageName=" + imageName + "]";
 	}
-	
+
 }
