@@ -4,9 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.sound.midi.VoiceStatus;
-
-import org.apache.tomcat.util.net.TLSClientHelloExtractor;
 
 @Entity
 public class Role {
@@ -44,9 +41,5 @@ public class Role {
 		return "Role [roleId=" + roleId + ", roleName=" + roleName + "]";
 	}
 	
-	public Void hello()
-	{
-		System.out.println("Hi");
-		return null;
-	}
+	
 }

@@ -15,18 +15,18 @@ public class Menu {
 	String dishName;
 	String description;
 	int price;
-	MultipartFile image;
-	String imageName;
+	String imageType;
+	String imageName; 
 	
 	public Menu()
 	{}
 	
-	public Menu(String dishName, String description, int price, MultipartFile image, String imageName) {
+	public Menu(String dishName, String description, int price, String imageType, String imageName) {
 		super();
 		this.dishName = dishName;
 		this.description = description;
 		this.price = price;
-		this.image = image;
+		this.imageType = imageType;
 		this.imageName = imageName;
 	}
 
@@ -62,12 +62,12 @@ public class Menu {
 		this.price = price;
 	}
 
-	public MultipartFile getImage() {
-		return image;
+	public String getImageType() {
+		return imageType;
 	}
 
-	public void setImage(MultipartFile image) {
-		this.image = image;
+	public void setImageType(String imageType) {
+		this.imageType = imageType;
 	}
 
 	public String getImageName() {
@@ -81,7 +81,7 @@ public class Menu {
 	@Override
 	public String toString() {
 		return "Menu [menuId=" + menuId + ", dishName=" + dishName + ", description=" + description + ", price=" + price
-				+ ", image=" + image + ", imageName=" + imageName + "]";
+				+ ", image=" + imageType + ", imageName=" + imageName + "]";
 	}
 	
 }
