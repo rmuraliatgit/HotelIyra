@@ -74,9 +74,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public Optional<User> findUserById(int id){
-		Optional<User> existingUser = userRepository.findById(id);
-		if (!existingUser.isPresent()) {
+	public User findUserById(int id){
+		User existingUser = userRepository.findById(id);
+		if (existingUser==null) {
 			logger.warn("User Not Found");
 			throw new UserNotFoundException("User Not Found");
 		} else {
@@ -101,9 +101,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public Optional<User> deleteUser(int userId){
-		Optional<User> existingUser = userRepository.findById(userId);
-		if (!existingUser.isPresent()) {
+	public User deleteUser(int userId){
+		User existingUser = userRepository.findById(userId);
+		if (existingUser==null) {
 			logger.warn("User does not exists!!");
 			throw new UserNotFoundException("User does not exists!!");
 		} else {

@@ -9,6 +9,6 @@ import com.hotel.demo.model.Menu;
 public interface MenuRepository extends JpaRepository<Menu, Integer>{
 
 	Menu findByDishName(String dishName);
-
+	Menu findById(int id);
 	
 }

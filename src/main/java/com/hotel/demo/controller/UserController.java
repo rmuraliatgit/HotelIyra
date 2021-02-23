@@ -85,11 +85,11 @@ public class UserController {
 	 */
 	
 	@GetMapping("/usersById/{id}")
-	public ResponseEntity<Optional<User>> getUserById(@PathVariable("id") int id){
-		ResponseEntity<Optional<User>> response;
+	public ResponseEntity<User> getUserById(@PathVariable("id") int id){
+		ResponseEntity<User> response;
 		logger.info("Recieved id on path: ");
-		Optional<User> user = userService.findUserById(id);
-		if (user.isPresent()) {
+		User user = userService.findUserById(id);
+		if (user!=null) {
 			response = new ResponseEntity<>(user, HttpStatus.OK);
 		} else {
 			throw new UserNotFoundException("No user has been found");

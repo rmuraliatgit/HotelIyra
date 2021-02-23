@@ -30,5 +30,7 @@ public interface UserRepository extends JpaRepository<User,Integer> {
 	Optional<User> findUsers(int id);
 
 	User save(Optional<User> updatedUser);
+	
+	User findById(int id);
 
 }

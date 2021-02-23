@@ -13,7 +13,7 @@ public interface UserService {
 	
 	 User login(User user);
 
-	 Optional<User> findUserById(int id);
+	 User findUserById(int id);
 
 	 User findByEmail(String email);
 
@@ -21,5 +21,5 @@ public interface UserService {
 
 	 User updateUser(User user);
 
-	 Optional<User> deleteUser(int id);
+	 User deleteUser(int id);
 }

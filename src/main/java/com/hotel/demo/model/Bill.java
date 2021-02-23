@@ -16,35 +16,32 @@ public class Bill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int billId;
-	double unitCost;
 	double amount;
 	double discount;
-	int quantity;
-	double totalAmount; 
-	String date; 
+	double totalAmount;
+	String date;
 	String time;
-	@OneToMany(cascade = CascadeType.ALL)
-	List<Menu> menu;
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-	@JoinColumn(name="UserList" , referencedColumnName="id")
-	User user;
-
+//	@OneToMany(cascade = CascadeType.ALL)
+//	List<Menu> menu;
+	@OneToOne
+	Cart cart;
+//	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
+//	@JoinColumn(name = "UserList", referencedColumnName = "id")
+//	User user;
+	
 	public Bill() {
 		super();
 	}
 
-	public Bill(double unitCost, double amount, double discount, int quantity, double totalAmount, String date,
-			String time, List<Menu> menu, User user) {
+	public Bill(double amount, double discount, double totalAmount, String date, String time, Cart cart
+			) {
 		super();
-		this.unitCost = unitCost;
 		this.amount = amount;
 		this.discount = discount;
-		this.quantity = quantity;
 		this.totalAmount = totalAmount;
 		this.date = date;
 		this.time = time;
-		this.menu = menu;
-		this.user = user;
+		this.cart = cart;
 	}
 
 	public int getBillId() {
@@ -53,14 +50,6 @@ public class Bill {
 
 	public void setBillId(int billId) {
 		this.billId = billId;
-	}
-
-	public double getUnitCost() {
-		return unitCost;
-	}
-
-	public void setUnitCost(double unitCost) {
-		this.unitCost = unitCost;
 	}
 
 	public double getAmount() {
@@ -77,14 +66,6 @@ public class Bill {
 
 	public void setDiscount(double discount) {
 		this.discount = discount;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 
 	public double getTotalAmount() {
@@ -111,27 +92,14 @@ public class Bill {
 		this.time = time;
 	}
 
-	public List<Menu> getMenu() {
-		return menu;
-	}
+	
 
-	public void setMenu(List<Menu> menu) {
-		this.menu = menu;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+	
 
 	@Override
 	public String toString() {
-		return "Bill [billId=" + billId + ", unitCost=" + unitCost + ", amount=" + amount + ", discount=" + discount
-				+ ", quantity=" + quantity + ", totalAmount=" + totalAmount + ", date=" + date + ", time=" + time
-				+ ", menu=" + menu + ", user=" + user + "]";
+		return "Bill [billId=" + billId + ", amount=" + amount + ", discount=" + discount + ", totalAmount="
+				+ totalAmount + ", date=" + date + ", time=" + time + "]";
 	}
 
 }

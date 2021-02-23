@@ -15,13 +15,14 @@ import net.bytebuddy.dynamic.loading.ClassReloadingStrategy.Strategy;
 public class Menu {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	int menuId;
 	String dishName;
 	String description;
 	int price;
 	String imageType;
 	String imageName;
+	
 	
 	public Menu() {
 		super();
