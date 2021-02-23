@@ -25,9 +25,9 @@ public class CartController {
 	CartService cartService;
 	
 	@PostMapping("/cart/{menuId}")
-	public ResponseEntity<Cart> addToCart(@PathVariable("menuId") int menuId, @RequestParam int userId)
+	public ResponseEntity<Cart> addToCart(@PathVariable("menuId") int menuId, @RequestParam int userId,@RequestParam int quantity)
 	{		
-		Cart cart=cartService.addToCart(menuId,userId);
+		Cart cart=cartService.addToCart(menuId,userId,quantity);
 		if(cart!=null)
 		return new ResponseEntity<>(cart,HttpStatus.CREATED);
 		else 

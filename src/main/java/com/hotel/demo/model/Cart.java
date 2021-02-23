@@ -17,17 +17,20 @@ public class Cart {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int cid;	
-	int cartId;
+	int cid;
+	int cartId;	
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
+	@JoinColumn(name="user",referencedColumnName = "id")
 	User user;
 	@ManyToMany
+	@JoinColumn(name = "menu",referencedColumnName = "cid")
 	List<Menu> menu;
 	
+
 	public Cart() {
 		super();
 	}
-
+ 
 	public Cart(User user) {
 		super();
 		this.user = user;
@@ -35,7 +38,8 @@ public class Cart {
 
 	public Cart(int cartId, User user, List<Menu> menu) {
 		super();
-		this.cartId=cartId;
+		this.cartId = cartId;
+		
 		this.user = user;
 		this.menu = menu;
 	}
@@ -48,6 +52,7 @@ public class Cart {
 		this.cartId = cartId;
 	}
 
+	
 	public User getUser() {
 		return user;
 	}
@@ -70,6 +75,7 @@ public class Cart {
 
 	@Override
 	public String toString() {
-		return "Cart [cartId=" + cartId + ", user=" + user + ", menu=" + menu + "]";
+		return "Cart [cid=" + cid + ", cartId=" + cartId + ", user=" + user + ", menu=" + menu + "]";
 	}
+
 }
