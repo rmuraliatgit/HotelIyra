@@ -39,13 +39,13 @@ public class CartServiceImpl implements CartService {
 		Cart cart;
 		User user = userRepository.findById(userId);
 		System.out.println(user);
-		Cart cartobj = new Cart();
+		Cart cartobj;
 		System.out.println(cartRepository.findByUserId(userId));
 		if (cartRepository.findByUserId(userId) != null) {
 			cart = cartRepository.findByUserId(userId);
 //			cart =new Cart(cart.getCartId(),user,null);
 			System.out.println(menu);
-			Quantity quantity2 = new Quantity(menuId,quantity,cart);
+			Quantity quantity2 = new Quantity(menuId,quantity,cart.getCartId());
 			quantityRepository.save(quantity2);
 //			cart.setQuantity(quantity);
 			List<Menu> obj = new ArrayList<>();
@@ -56,12 +56,12 @@ public class CartServiceImpl implements CartService {
 			System.out.println(menuList);
 			cartobj=cartRepository.save(cart);
 		} else {
-			cart = new Cart(++i,user, null);
+			cart = new Cart(user, null);
 			System.out.println("else");
-			System.out.println(cart);
-			cartobj=cartRepository.save(cart);
-			System.out.println(cart);
-			Quantity quantity2 = new Quantity(menuId,quantity,cart);
+			System.out.println(quantity);
+			cartobj=cartRepository.saveAndFlush(cart);
+			System.out.println(cartobj);
+			Quantity quantity2 = new Quantity(menuId,quantity,cartobj.getCartId());
 			quantityRepository.save(quantity2);
 			menuList.add(menu);
 			cartobj.setMenu(menuList);

@@ -1,5 +1,7 @@
 package com.hotel.demo.model;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,18 +16,25 @@ public class Quantity {
 	int quantId;
 	int menuId;
 	int quantity;
-	@ManyToOne
-	Cart cart;
+	int cartId;
 
 	public Quantity() {
 
 	}
 
-	public Quantity(int menuId, int quantity, Cart cart) {
+	public Quantity(int menuId, int quantity, int cartId) {
 		super();
 		this.menuId = menuId;
 		this.quantity = quantity;
-		this.cart = cart;
+		this.cartId = cartId;
+	}
+
+	public int getCartId() {
+		return cartId;
+	}
+
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
 	}
 
 	public int getQuantId() {
@@ -51,14 +60,5 @@ public class Quantity {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-
-	public Cart getCart() {
-		return cart;
-	}
-
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
-	
 
 }

@@ -16,31 +16,26 @@ public class Bill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int billId;
-	double amount;
-	double discount;
+
 	double totalAmount;
 	String date;
 	String time;
-//	@OneToMany(cascade = CascadeType.ALL)
-//	List<Menu> menu;
+	String userName;
 	@OneToOne
 	Cart cart;
-//	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
-//	@JoinColumn(name = "UserList", referencedColumnName = "id")
-//	User user;
 	
 	public Bill() {
 		super();
 	}
 
-	public Bill(double amount, double discount, double totalAmount, String date, String time, Cart cart
+	public Bill(double totalAmount, String date, String time,String userName,int quantity, Cart cart
 			) {
 		super();
-		this.amount = amount;
-		this.discount = discount;
+		
 		this.totalAmount = totalAmount;
 		this.date = date;
 		this.time = time;
+		this.userName = userName;
 		this.cart = cart;
 	}
 
@@ -50,22 +45,6 @@ public class Bill {
 
 	public void setBillId(int billId) {
 		this.billId = billId;
-	}
-
-	public double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
-
-	public double getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(double discount) {
-		this.discount = discount;
 	}
 
 	public double getTotalAmount() {
@@ -91,14 +70,27 @@ public class Bill {
 	public void setTime(String time) {
 		this.time = time;
 	}
-
 	
 
-	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 
 	@Override
 	public String toString() {
-		return "Bill [billId=" + billId + ", amount=" + amount + ", discount=" + discount + ", totalAmount="
+		return "Bill [billId=" + billId  +  ", totalAmount="
 				+ totalAmount + ", date=" + date + ", time=" + time + "]";
 	}
 

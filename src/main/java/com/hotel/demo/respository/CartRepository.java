@@ -1,5 +1,7 @@
 package com.hotel.demo.respository;
 
+import javax.swing.plaf.multi.MultiInternalFrameUI;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -11,5 +13,8 @@ public interface CartRepository extends JpaRepository<Cart, Integer> {
 
 	@Query("Select c from Cart c where user.id=?1")
 	Cart findByUserId(int id);
+	
+	Cart findById(int cartId);
+	
 	
 }
